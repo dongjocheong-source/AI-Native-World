@@ -55,8 +55,8 @@ const CATEGORIES = [
     icon: "file-text",
     description: "AI관련 용어, 유용한 Tool 정보 정리",
     items: [
-      { id: "doc-1", title: "LLM_Knowledge_Bases", meta: "By Karpathy", hue: 205,
-        body: "2026년 3분기 전략 방향을 논의한 회의 기록입니다.\n\n주요 안건: 신규 시장 진입 우선순위, 분기 목표(OKR) 재설정, 리소스 배분 조정." },
+      { id: "ai-trend", title: "AI 발전 흐름", meta: "용어 정리 · 편집 가능", hue: 205, skipGenerate: true,
+        body: "AI 활용 관련 핵심 용어와 흐름을 정리한 편집 가능한 페이지입니다." },
       { id: "doc-2", title: "표준 NDA 템플릿", meta: "계약서 · 5쪽", hue: 205,
         body: "외부 협력사와 체결하는 비밀유지계약(NDA)의 표준 양식입니다.\n\n법무팀 검토가 완료된 최신 버전이며, 별도 승인 없이 바로 사용할 수 있습니다." },
       { id: "doc-3", title: "신규 입사자 온보딩 가이드", meta: "매뉴얼 · 12쪽", hue: 205,
@@ -66,10 +66,7 @@ const CATEGORIES = [
       // skipGenerate: true → generate_items.js가 이 항목의 items/ai-trend.html을
       // 절대 덮어쓰지 않습니다. 이 페이지는 손으로 직접 작성한 편집 가능한
       // (추가/수정/삭제) 커스텀 페이지이기 때문입니다. 자세한 내용은 GUIDE.md 참고.
-      { id: "ai-trend", title: "AI 발전 흐름", meta: "용어 정리 · 편집 가능", hue: 205,
-        skipGenerate: true,
-        body: "AI 활용 관련 핵심 용어와 흐름을 정리한 편집 가능한 페이지입니다." },
-    ],
+   ],
   },
  
   {
