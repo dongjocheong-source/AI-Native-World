@@ -9,7 +9,7 @@
 <body>
   <div class="app">
     <nav class="sidebar">
-      <div class="brand">
+      <button class="brand" id="brand-home" type="button" title="메인 포털로 돌아가기">
         <span class="brand-mark">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Z"/>
@@ -18,7 +18,7 @@
           </svg>
         </span>
         <span class="brand-name">INFO HUB</span>
-      </div>
+      </button>
 
       <ul class="nav-list" id="nav-list"></ul>
 
@@ -29,14 +29,21 @@
     </nav>
 
     <main class="main">
-      <header class="main-header">
-        <p class="eyebrow" id="page-eyebrow">CATEGORY</p>
-        <h1 class="page-title" id="page-title">-</h1>
-        <p class="page-desc" id="page-desc"></p>
-        <p class="item-count" id="item-count"></p>
-      </header>
+      <section id="portal-view" class="portal-view">
+        <h1 class="portal-title">Go to AI Native World with 12 AI Tools</h1>
+        <div class="portal-grid" id="portal-grid"></div>
+      </section>
 
-      <section class="item-grid" id="item-grid"></section>
+      <section id="category-view" class="category-view" hidden>
+        <header class="main-header">
+          <p class="eyebrow" id="page-eyebrow">CATEGORY</p>
+          <h1 class="page-title" id="page-title">-</h1>
+          <p class="page-desc" id="page-desc"></p>
+          <p class="item-count" id="item-count"></p>
+        </header>
+
+        <section class="item-grid" id="item-grid"></section>
+      </section>
     </main>
   </div>
 

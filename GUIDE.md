@@ -7,20 +7,32 @@ Spotify 디자인 시스템(`DESIGN-spotify.md`)을 기반으로 한 다크 테�
 ## 1. 무엇이 만들어졌는가
 
 ```
-info-hub/
-├─ index.html          # 사이드바(10개 카테고리) + 항목 그리드가 있는 메인 화면
+AI-Native-World-main/
+├─ index.html          # 메인 포털 + 사이드바(카테고리) + 항목 그리드가 있는 메인 화면
 ├─ style.css           # 디자인 토큰 + 모든 컴포넌트 스타일 (단일 파일)
-├─ data.js             # 콘텐츠 원본 데이터 (카테고리 10개 × 항목 4개 = 40개)
+├─ data.js             # 콘텐츠 원본 데이터 (PORTAL_TOOLS 12개 + CATEGORIES N개)
 ├─ icons.js            # 인라인 SVG 아이콘 세트 (외부 CDN/폰트 불필요)
-├─ main.js             # index.html 동작 스크립트 (사이드바 렌더링, 항목 그리드 렌더링)
-├─ generate_items.js   # data.js를 읽어 items/*.html 40개를 자동 생성하는 스크립트
+├─ main.js             # index.html 동작 스크립트 (포털/사이드바/항목 그리드 렌더링)
+├─ generate_items.js   # data.js를 읽어 items/*.html을 자동 생성하는 스크립트
+├─ assets/portal/      # 메인 포털 12개 도구 타일의 아이콘 PNG
 └─ items/
    ├─ doc-1.html ...    # 항목별 상세 페이지 (자동 생성됨, 직접 수정하지 않음)
 ```
 
-**동작 방식**: `index.html`을 열면 왼쪽 사이드바에 10개 카테고리가 나열됩니다.
-카테고리를 클릭하면 오른쪽 메인 영역에 해당 카테고리의 항목이 카드 그리드로 나타나고,
+**동작 방식**: `index.html`을 처음 열면 **메인 포털**(12개 AI 도구 타일)이 기본 화면으로 보입니다.
+왼쪽 사이드바에서 카테고리를 클릭하면 오른쪽 메인 영역이 해당 카테고리의 항목 카드 그리드로 바뀌고,
 카드를 클릭하면 `items/{항목id}.html`이라는 독립된 정적 HTML 페이지로 이동합니다.
+어느 카테고리에 있든 왼쪽 위의 로고("INFO HUB")를 클릭하면 다시 메인 포털로 돌아갑니다.
+
+### 메인 포털 (기본 화면)
+
+- 콘텐츠는 `data.js`의 `PORTAL_TOOLS` 배열입니다. 각 항목은 `{ label, icon, bg }`로,
+  `icon`은 `assets/portal/` 안의 파일명, `bg`는 타일 배경색입니다.
+- 포털 타일은 **클릭해도 아무 곳으로도 이동하지 않는 순수 장식/브랜딩 영역**입니다.
+  카테고리 탐색은 오직 왼쪽 사이드바로만 이루어집니다.
+- 화면 전환은 `index.html`의 `#portal-view` / `#category-view` 두 `<section>`을
+  `main.js`가 `hidden` 속성으로 토글하는 방식입니다 (별도 페이지 이동 없음).
+- 로고 버튼은 `index.html`의 `#brand-home`이며, 클릭 시 `main.js`의 `goToPortal()`이 실행됩니다.
 
 ## 2. 콘텐츠를 바꾸는 방법 (가장 중요)
 

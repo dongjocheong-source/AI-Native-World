@@ -107,6 +107,17 @@ button {
   align-items: center;
   gap: 10px;
   padding: 6px 12px 18px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  border-radius: var(--radius-sm);
+  transition: opacity 0.15s ease;
+}
+
+.brand:hover {
+  opacity: 0.85;
 }
 
 .brand-mark {
@@ -202,6 +213,83 @@ button {
 
 .main-header {
   margin-bottom: 28px;
+}
+
+/* ==========================================================================
+   Main portal (default landing view)
+   ========================================================================== */
+
+.portal-view {
+  padding-top: 64px;
+}
+
+.portal-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 34px;
+  text-align: center;
+  color: var(--text-bright);
+  margin: 0 0 72px;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 28px 24px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.portal-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.portal-tile-icon {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 108px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-medium);
+}
+
+.portal-tile-icon img {
+  width: 55%;
+  height: 55%;
+  object-fit: contain;
+}
+
+.portal-tile-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .portal-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .portal-view {
+    padding-top: 32px;
+  }
+  .portal-title {
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+  .portal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px 16px;
+  }
 }
 
 .eyebrow {
