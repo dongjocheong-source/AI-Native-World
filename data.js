@@ -41,6 +41,40 @@ const CATEGORIES = [
         body: "매월 말 팀별로 제출하는 성과 리포트의 공통 양식입니다.\n\n핵심 지표(KPI), 이번 달 하이라이트, 다음 달 계획 세 섹션으로 구성됩니다." },
     ],
   },
+ 
+  {
+    id: "recipes",
+    label: "AI활용팁",
+    icon: "coffee",
+    description: "자주 해먹는 요리와 새로 시도해볼 레시피입니다.",
+    items: [
+      { id: "recipe-1", title: "김치찌개", meta: "20분", hue: 5,
+        body: "돼지고기와 묵은지로 끓이는 기본 김치찌개 레시피입니다." },
+      { id: "recipe-2", title: "파스타 알리오 올리오", meta: "15분", hue: 5,
+        body: "마늘과 올리브오일만으로 만드는 심플한 파스타입니다." },
+      { id: "recipe-3", title: "홈메이드 라떼", meta: "5분", hue: 5,
+        body: "집에서 에스프레소 머신 없이 만드는 라떼 레시피입니다." },
+      { id: "recipe-4", title: "에어프라이어 치킨", meta: "30분", hue: 5,
+        body: "에어프라이어로 기름 없이 바삭하게 만드는 치킨 레시피입니다." },
+    ],
+  },
+  
+  {
+    id: "contacts",
+    label: "유용한정보",
+    icon: "user",
+    description: "아이디어를 얻을수 있는 유용한 정보를 관리합니다.",
+    items: [
+      { id: "contact-1", title: "디자인팀", meta: "내부 · 6명", hue: 160,
+        body: "디자인팀 구성원 연락처와 담당 업무 목록입니다." },
+      { id: "contact-2", title: "외주 개발자", meta: "외부 · 3명", hue: 160,
+        body: "현재 협업 중인 외주 개발자 연락처입니다." },
+      { id: "contact-3", title: "거래처 담당자", meta: "외부 · 4명", hue: 160,
+        body: "주요 거래처 담당자 연락처 및 계약 조건 요약입니다." },
+      { id: "contact-4", title: "멘토 리스트", meta: "개인", hue: 160,
+        body: "커리어 관련 조언을 구하는 멘토 연락처 목록입니다." },
+    ],
+  },
   {
     id: "projects",
     label: "프로젝트",
@@ -105,22 +139,7 @@ const CATEGORIES = [
         body: "디자인 시스템 구축 방법론에 대한 강의를 듣고 정리했습니다.\n\n토큰 설계, 컴포넌트 문서화 방식을 중점적으로 다룹니다." },
     ],
   },
-  {
-    id: "recipes",
-    label: "레시피",
-    icon: "coffee",
-    description: "자주 해먹는 요리와 새로 시도해볼 레시피입니다.",
-    items: [
-      { id: "recipe-1", title: "김치찌개", meta: "20분", hue: 5,
-        body: "돼지고기와 묵은지로 끓이는 기본 김치찌개 레시피입니다." },
-      { id: "recipe-2", title: "파스타 알리오 올리오", meta: "15분", hue: 5,
-        body: "마늘과 올리브오일만으로 만드는 심플한 파스타입니다." },
-      { id: "recipe-3", title: "홈메이드 라떼", meta: "5분", hue: 5,
-        body: "집에서 에스프레소 머신 없이 만드는 라떼 레시피입니다." },
-      { id: "recipe-4", title: "에어프라이어 치킨", meta: "30분", hue: 5,
-        body: "에어프라이어로 기름 없이 바삭하게 만드는 치킨 레시피입니다." },
-    ],
-  },
+
   {
     id: "ideas",
     label: "아이디어",
@@ -137,22 +156,7 @@ const CATEGORIES = [
         body: "반복 업무를 자동화할 수 있는 방법에 대한 아이디어 메모입니다." },
     ],
   },
-  {
-    id: "contacts",
-    label: "연락처",
-    icon: "user",
-    description: "자주 연락하는 사람과 팀의 연락처를 관리합니다.",
-    items: [
-      { id: "contact-1", title: "디자인팀", meta: "내부 · 6명", hue: 160,
-        body: "디자인팀 구성원 연락처와 담당 업무 목록입니다." },
-      { id: "contact-2", title: "외주 개발자", meta: "외부 · 3명", hue: 160,
-        body: "현재 협업 중인 외주 개발자 연락처입니다." },
-      { id: "contact-3", title: "거래처 담당자", meta: "외부 · 4명", hue: 160,
-        body: "주요 거래처 담당자 연락처 및 계약 조건 요약입니다." },
-      { id: "contact-4", title: "멘토 리스트", meta: "개인", hue: 160,
-        body: "커리어 관련 조언을 구하는 멘토 연락처 목록입니다." },
-    ],
-  },
+
   {
     id: "schedule",
     label: "일정",
