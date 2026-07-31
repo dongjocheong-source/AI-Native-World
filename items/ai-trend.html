@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 발전 흐름 · 정보 허브</title>
+<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <!--
+    이 페이지는 generate_items.js가 자동 생성하지 않는 "커스텀" 상세 페이지입니다
+    (data.js의 ai-trend 항목에 skipGenerate: true 표시됨). node generate_items.js를
+    실행해도 이 파일은 그대로 유지됩니다. 자세한 내용은 ../GUIDE.md 참고.
+
+    항목 추가/수정/삭제 내용은 이 브라우저의 localStorage에 저장됩니다
+    (서버가 없는 정적 사이트라서 파일에 직접 쓰지는 못합니다). 다른 브라우저나
+    다른 컴퓨터에서 열면 아래 SEED_DATA 기본값부터 다시 시작합니다.
+  -->
+  <div class="app">
+    <main class="main" style="flex: 1;">
+      <div class="detail-shell" style="max-width: 780px;">
+        <p class="back-link">
+          <a class="pill outlined" href="../index.html#documents">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+            <span>AI용어정리 목록으로 돌아가기</span>
+          </a>
+        </p>
+
+        <span class="detail-tag">AI용어정리</span>
+        <h1 class="detail-title">AI 발전 흐름</h1>
+        <p class="detail-meta">편집 가능 · 이 브라우저에 자동 저장됨</p>
+
+        <div class="entry-toolbar">
+          <button class="pill subtle" id="btn-reset" type="button">기본값으로 초기화</button>
+          <button class="pill primary" id="btn-add" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            <span>새 항목 추가</span>
+          </button>
+        </div>
+
+        <div class="entry-list" id="entry-list"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../icons.js"></script>
+  <script>
+    const STORAGE_KEY = "ai-hub:ai-trend:v1";
+
+    // 기본(seed) 데이터 — 처음 열었을 때, 또는 "기본값으로 초기화"를 눌렀을 때 사용됩니다.
+    const SEED_DATA = [
+      {
+        title: "프롬프트 엔지니어링",
+        lines: [
+          "AI로부터 원하는 결과를 얻기 위해 입력값(질문이나 지시어)을 설계하고 최적화하는 기술",
+          "명확한 페르소나 설정, 구체적인 맥락 제공, 출력 형식 지정이 핵심 구성 요소",
+          "단순한 질문을 넘어 AI의 논리적 사고를 유도하여 업무 효율과 답변의 정확도를 극대화하는 과정",
+          "[단점] 한계점이 많음",
+        ],
+      },
+      {
+        title: "컨텍스트 엔지니어링",
+        lines: [
+          "배경 정보를 같이 줘서 이해할 수 있도록 도움",
+          "AI가 상황을 정확히 이해할 수 있도록 관련된 배경 지식, 이전 대화 내용, 특정 제약 조건을 체계적으로 제공하는 기술",
+          "모델의 할루시네이션(환각 현상)을 줄이고, 사용자의 의도에 가장 부합하는 정교한 답변을 생성하도록 유도.",
+          "단순히 질문을 잘 던지는 것을 넘어, AI에게 필요한 '정보의 환경'을 설계하여 답변의 품질과 일관성을 높이는 과정.",
+        ],
+      },
+      {
+        title: "MCP + 스킬",
+        lines: [
+          "MCP는 AI와 외부 데이터를 연결하는 '표준화된 파이프라인'이며, 스킬은 그 파이프라인을 통해 AI가 실제로 휘두르는 '전문적인 도구'.",
+          "MCP (Model Context Protocol)",
+          "- 정의: AI 모델이 로컬 데이터나 외부 도구(Tool), 서비스와 안전하고 표준화된 방식으로 연결될 수 있도록 돕는 오픈 표준 인터페이스.",
+          "- 역할: 각 서비스마다 다른 연결 방식을 사용하는 대신, 하나의 공통 규격을 통해 AI가 데이터베이스, 파일 시스템, API 등을 쉽게 읽고 쓸 수 있게 만드는 '데이터의 통로' 역할",
+          "스킬 (Skill)",
+          "- 정의: AI가 특정 작업을 수행하기 위해 실행할 수 있는 구체적인 기능이나 도구(Tool)의 집합을 의미",
+          "- 역할: AI가 단순히 텍스트를 생성하는 수준을 넘어 \"웹 검색을 해라\", \"이미지를 생성해라\", \"이메일을 보내라\"와 같이 실제 행동을 취할 수 있는 '실행 능력'을 부여",
+          "- 단점: 스킬이 너무 많아짐",
+        ],
+      },
+      {
+        title: "하네스 엔지니어링 (Claude.md, Hooks)",
+        lines: [
+          "\"AI 에이전트가 뛰어난 개발자가 되도록 개발 환경과 안전장치를 설계하는 새로운 소프트웨어 엔지니어링 방식\"",
+          "AI 에이전트가 안정적으로 개발 작업을 수행할 수 있도록 코드, 도구, 테스트, 규칙, 실행 환경을 설계하는 엔지니어링 방식.",
+          "단순히 AI에게 코딩을 시키는 것이 아니라, AI가 실수하지 않고 반복 가능하게 일하도록 \"개발 하네스(안전장치)\"를 구축하는 것이 핵심.",
+          "목표는 개발자의 판단력 + AI 에이전트의 실행력을 결합해 소프트웨어 개발 속도와 품질을 동시에 높이는 것.",
+          "하네스 (마구 : 말을 다루는 도구)",
+          "이전 메시지를 기억하는 개념은 하네스가 이미 돌아가고 있다는 의미이기도 함",
+          "- 일반 AI 모델 : Text In --> Text Out",
+          "하네스 엔지니어링 구성",
+          "1) 컨텍스트 파일 (예: claude.md, agent.md)",
+          "2) 자동 강제 시스템 (린터, 프리커밋 훅)",
+          "- 린터: 코드 맞춤법 검사기, 규칙 위반 시 자동 에러",
+          "- 프리커밋 훅: 저장 전 자동 검사",
+          "- 자동 교정 루프: 린터 빨간불 → 에이전트가 스스로 수정 → 사람 개입 불필요",
+          "3) 가비지 컬렉션 (쓰레기 청소)",
+          "- 주기적 청소 에이전트",
+          "→ 시간이 지날수록 하네스가 점점 더 정교해짐.",
+        ],
+      },
+      {
+        title: "루프 엔지니어링",
+        lines: [
+          "\"AI 에이전트가 스스로 실행하고 검증하며 개선하도록 반복 가능한 피드백 구조를 만드는 엔지니어링 방식\"",
+          "AI 에이전트가 목표를 향해 반복적으로 실행 → 검증 → 개선하는 피드백 루프를 설계하는 개발 방식.",
+          "사람의 일회성 지시가 아니라, 계획(Plan) → 실행(Build) → 테스트(Evaluate) → 수정(Refine)의 반복 구조를 만들어 AI 성능을 지속적으로 향상.",
+          "핵심은 AI에게 일을 맡기는 것이 아니라, AI가 스스로 결과를 점검하고 개선하도록 루프를 설계하는 것.",
+        ],
+      },
+      {
+        title: "그래프 엔지니어링",
+        lines: ["ㅣ (내용 준비중 — 편집 버튼을 눌러 채워주세요)"],
+      },
+    ];
+
+    function cloneSeed() {
+      return SEED_DATA.map((e) => ({
+        id: "e" + Math.random().toString(36).slice(2, 10),
+        title: e.title,
+        lines: e.lines.slice(),
+      }));
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (err) {
+        /* ignore corrupt storage, fall back to seed */
+      }
+      return cloneSeed();
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (err) {
+        /* localStorage unavailable (e.g. private mode) — edits won't persist */
+      }
+    }
+
+    let state = loadState();
+    let editingId = null; // id of entry currently in edit mode, or "__new__"
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+      }[c]));
+    }
+
+    function renderViewCard(entry) {
+      const items = entry.lines
+        .filter((l) => l.trim().length > 0)
+        .map((l) => `<li>${escapeHtml(l)}</li>`)
+        .join("");
+      return `
+        <div class="entry-card" data-id="${entry.id}">
+          <div class="entry-header">
+            <h2 class="entry-title">${escapeHtml(entry.title)}</h2>
+            <div class="entry-actions">
+              <button class="entry-action-btn" data-action="edit" data-id="${entry.id}" title="편집" type="button">${iconSvg("edit-3")}</button>
+              <button class="entry-action-btn danger" data-action="delete" data-id="${entry.id}" title="삭제" type="button">${iconSvg("trash")}</button>
+            </div>
+          </div>
+          <div class="entry-content"><ul>${items || "<li>내용 없음</li>"}</ul></div>
+        </div>`;
+    }
+
+    function renderEditForm(entry) {
+      return `
+        <div class="entry-card" data-id="${entry.id}">
+          <form class="entry-edit-form" data-id="${entry.id}">
+            <label for="title-${entry.id}">구분 (제목)</label>
+            <input type="text" id="title-${entry.id}" value="${escapeHtml(entry.title)}" />
+            <label for="lines-${entry.id}">주요 내용 (한 줄에 한 항목)</label>
+            <textarea id="lines-${entry.id}">${escapeHtml(entry.lines.join("\n"))}</textarea>
+            <p class="hint">줄바꿈으로 항목을 구분합니다. 하위 항목은 앞에 "- "를 붙여서 구분하세요.</p>
+            <div class="entry-edit-actions">
+              <button class="pill primary" data-action="save" data-id="${entry.id}" type="submit">
+                ${iconSvg("check")}<span>저장</span>
+              </button>
+              <button class="pill subtle" data-action="cancel" data-id="${entry.id}" type="button">
+                ${iconSvg("x")}<span>취소</span>
+              </button>
+            </div>
+          </form>
+        </div>`;
+    }
+
+    function render() {
+      const list = document.getElementById("entry-list");
+      if (!state.length) {
+        list.innerHTML = `<div class="entry-empty">아직 추가된 항목이 없습니다. 위의 "새 항목 추가"로 시작해보세요.</div>`;
+        return;
+      }
+      list.innerHTML = state
+        .map((entry) => (entry.id === editingId ? renderEditForm(entry) : renderViewCard(entry)))
+        .join("");
+
+      const editingForm = list.querySelector(`form[data-id="${editingId}"]`);
+      if (editingForm) {
+        const titleInput = editingForm.querySelector("input");
+        titleInput.focus();
+        titleInput.select();
+      }
+    }
+
+    function addEntry() {
+      const entry = { id: "e" + Math.random().toString(36).slice(2, 10), title: "새 항목", lines: [""] };
+      state.push(entry);
+      editingId = entry.id;
+      render();
+    }
+
+    function saveEntry(id) {
+      const form = document.querySelector(`form[data-id="${id}"]`);
+      const title = form.querySelector("input").value.trim() || "제목 없음";
+      const lines = form
+        .querySelector("textarea")
+        .value.split("\n")
+        .map((l) => l.trim())
+        .filter((l) => l.length > 0);
+      const entry = state.find((e) => e.id === id);
+      entry.title = title;
+      entry.lines = lines.length ? lines : ["내용 없음"];
+      editingId = null;
+      saveState();
+      render();
+    }
+
+    function deleteEntry(id) {
+      if (!confirm("이 항목을 삭제할까요?")) return;
+      state = state.filter((e) => e.id !== id);
+      if (editingId === id) editingId = null;
+      saveState();
+      render();
+    }
+
+    document.getElementById("entry-list").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-action]");
+      if (!btn) return;
+      const { action, id } = btn.dataset;
+      if (action === "edit") {
+        editingId = id;
+        render();
+      } else if (action === "delete") {
+        deleteEntry(id);
+      } else if (action === "cancel") {
+        editingId = null;
+        render();
+      }
+    });
+
+    document.getElementById("entry-list").addEventListener("submit", (e) => {
+      const form = e.target.closest("form.entry-edit-form");
+      if (!form) return;
+      e.preventDefault();
+      saveEntry(form.dataset.id);
+    });
+
+    document.getElementById("btn-add").addEventListener("click", addEntry);
+
+    document.getElementById("btn-reset").addEventListener("click", () => {
+      if (!confirm("모든 편집 내용을 지우고 기본값으로 되돌릴까요?")) return;
+      state = cloneSeed();
+      editingId = null;
+      saveState();
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

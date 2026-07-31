@@ -1,211 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Karpathy LLM Wiki Idea File Summary</title>
-<style>
-:root{
---bg:#121212;--surface:#181818;--card:#1f1f1f;--green:#1ed760;--white:#fff;--gray:#b3b3b3;
-}
-*{box-sizing:border-box}
-body{
-margin:0;background:var(--bg);color:var(--white);
-font-family:Arial,"Noto Sans KR",sans-serif;line-height:1.7;
-}
-.container{max-width:1200px;margin:auto;padding:48px 40px 120px}
-.hero{
-background:linear-gradient(180deg,#292929,#121212);
-padding:56px;border-radius:16px;
-}
-h1{font-size:58px;line-height:1.1;letter-spacing:-2px;margin:0 0 20px}
-h2{font-size:28px;margin-top:0}
-h3{font-size:19px}
-p,li{color:#d0d0d0;font-size:15px}
-a{color:var(--green)}
-.pill{
-display:inline-block;background:var(--green);color:#000;
-padding:12px 26px;border-radius:9999px;
-font-weight:700;text-transform:uppercase;letter-spacing:1px;
-}
-.section{margin-top:42px}
-.card{
-background:var(--surface);border-radius:10px;padding:28px;
-margin-bottom:20px;
-}
-.grid{
-display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
-}
-.flow{
-display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-}
-.step{background:var(--card);padding:22px;border-radius:8px}
-.step b{color:var(--green)}
-.highlight{
-border-left:5px solid var(--green);
-padding-left:24px;
-}
-.source{
-background:#181818;padding:24px;border-radius:10px;
-}
-.player{
-position:fixed;bottom:0;left:0;right:0;height:86px;
-background:#181818;display:flex;align-items:center;
-padding:20px 40px;box-shadow:0 -8px 24px rgba(0,0,0,.5)
-}
-.play{
-margin-left:auto;width:48px;height:48px;border-radius:50%;
-background:var(--green);color:#000;
-display:flex;align-items:center;justify-content:center;font-weight:bold;
-}
-@media(max-width:900px){
-.grid,.flow{grid-template-columns:1fr}
-.container{padding:24px}
-h1{font-size:40px}
-}
-</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LLM_Wiki_Idea · 정보 허브</title>
+<link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-<div class="container">
+  <div class="app">
+    <main class="main" style="flex: 1;">
+      <div class="detail-shell">
+        <p class="back-link">
+          <a class="pill outlined" href="../index.html#UsefulInfo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+            <span>유용한정보 목록으로 돌아가기</span>
+          </a>
+        </p>
 
-<section class="hero">
-<h1>LLM Wiki<br>Idea File</h1>
-<p>
-Andrej Karpathy가 제안한 "LLM을 활용한 개인 지식 베이스 구축 패턴"입니다.
-이 문서는 완성된 소프트웨어가 아니라, LLM Agent에게 전달하여
-자신만의 Knowledge Wiki를 구축하도록 하는 설계 아이디어 파일입니다.
-</p>
-<p>
-원본 링크:
-<a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">
-https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
-</a>
-</p>
-<div class="pill">LLM Knowledge System</div>
-</section>
+        <div class="detail-cover" style="background: linear-gradient(160deg, hsl(160 70% 42%), hsl(160 55% 18%));">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Z"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg>
+        </div>
 
-<section class="section">
-<h2>1. 핵심 배경: 기존 RAG의 한계</h2>
-<div class="card">
-<p>
-일반적인 LLM 문서 활용 방식은 RAG(Retrieval Augmented Generation)입니다.
-문서를 업로드하면 질문 시점에 관련 내용을 검색하고 답변을 생성합니다.
-</p>
-<p>
-하지만 Karpathy가 지적하는 문제는 "지식의 축적이 없다"는 점입니다.
-질문할 때마다 LLM은 원본 문서에서 다시 정보를 찾고 조합해야 하며,
-이전 분석 결과나 문서 간 관계가 지속적으로 쌓이지 않습니다.
-</p>
-</div>
-</section>
+        <span class="detail-tag">유용한정보</span>
+        <h1 class="detail-title">LLM_Wiki_Idea</h1>
+        <p class="detail-meta">By_Karpathy</p>
 
-<section class="section">
-<h2>2. LLM Wiki의 핵심 아이디어</h2>
-<div class="card highlight">
-<p>
-LLM Wiki는 검색 시스템이 아니라 "지식을 컴파일하고 유지하는 시스템"입니다.
-</p>
-<ul>
-<li>원본 자료를 읽는다</li>
-<li>핵심 정보를 추출한다</li>
-<li>기존 Wiki 구조와 연결한다</li>
-<li>새로운 정보와 기존 지식을 통합한다</li>
-<li>모순이나 변경 사항을 기록한다</li>
-</ul>
-<p>
-결과적으로 Wiki는 시간이 지날수록 풍부해지는 지속 가능한 지식 자산이 됩니다.
-</p>
-</div>
-</section>
-
-<section class="section">
-<h2>3. 전체 구조</h2>
-<div class="flow">
-<div class="step"><b>Raw Sources</b><p>논문, 기사, 이미지, 데이터 등 원본 자료</p></div>
-<div class="step"><b>LLM Compile</b><p>LLM이 Markdown Wiki 생성</p></div>
-<div class="step"><b>Persistent Wiki</b><p>문서 연결과 지식 구조 유지</p></div>
-<div class="step"><b>Agent Query</b><p>축적된 지식 기반 질문 응답</p></div>
-</div>
-</section>
-
-<section class="section">
-<h2>4. Persistent Wiki 방식</h2>
-<div class="grid">
-<div class="card">
-<h3>Knowledge Compilation</h3>
-<p>
-새 문서가 추가될 때 단순히 색인하지 않습니다.
-LLM이 내용을 읽고 기존 지식 구조에 반영합니다.
-</p>
-</div>
-<div class="card">
-<h3>Knowledge Connection</h3>
-<p>
-Entity Page, Topic Summary, Backlink 등을 생성하여
-문서 사이의 관계를 유지합니다.
-</p>
-</div>
-<div class="card">
-<h3>Knowledge Growth</h3>
-<p>
-새로운 자료와 질문이 추가될수록 Wiki가 점점 더 정교해집니다.
-</p>
-</div>
-</div>
-</section>
-
-<section class="section">
-<h2>5. Idea File의 의미</h2>
-<div class="card">
-<p>
-Karpathy는 완성된 코드보다 "아이디어 파일"을 공유하는 새로운 방식을 제안합니다.
-</p>
-<p>
-사용자는 이 문서를 자신의 LLM Agent(Codex, Claude Code 등)에 전달하고,
-Agent가 자신의 환경에 맞는 LLM Wiki를 구현하도록 합니다.
-</p>
-</div>
-</section>
-
-<section class="section">
-<h2>6. 활용 예시</h2>
-<div class="card">
-<ul>
-<li>개인 연구 Knowledge Base</li>
-<li>논문 및 기술 자료 관리</li>
-<li>기업 내부 지식 Wiki</li>
-<li>프로젝트 히스토리 관리</li>
-<li>지속적으로 성장하는 AI Research Assistant</li>
-</ul>
-</div>
-</section>
-
-<section class="section">
-<h2>7. 기존 방식과 비교</h2>
-<div class="card">
-<table style="width:100%;color:white">
-<tr><th align="left">RAG</th><th align="left">LLM Wiki</th></tr>
-<tr><td>질문마다 검색</td><td>지식 사전 컴파일</td></tr>
-<tr><td>매번 새롭게 조합</td><td>기존 지식 활용</td></tr>
-<tr><td>축적 효과 제한</td><td>시간에 따라 성장</td></tr>
-</table>
-</div>
-</section>
-
-<section class="section">
-<div class="source">
-<h2>Reference</h2>
-<p>Author: Andrej Karpathy</p>
-<p>Title: LLM Wiki</p>
-<p>Original URL: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f</p>
-</div>
-</section>
-
-</div>
-
-<div class="player">
-<div><b>Karpathy - LLM Wiki</b><br><span style="color:#b3b3b3">AI Knowledge Playlist</span></div>
-<div class="play">▶</div>
-</div>
-
+        <div class="detail-card">
+        <p>현재 협업 중인 외주 개발자 연락처입니다.</p>
+        </div>
+      </div>
+    </main>
+  </div>
 </body>
 </html>
