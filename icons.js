@@ -25,6 +25,11 @@ const ICONS = {
   star: '<path d="m12 2 3.1 6.9 7.4.8-5.6 5 1.6 7.3L12 18.3 5.5 22l1.6-7.3-5.6-5 7.4-.8Z"/>',
   play: '<path d="M6 3.5v17l14-8.5Z"/>',
   "arrow-left": '<path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>',
+  plus: '<path d="M12 5v14"/><path d="M5 12h14"/>',
+  trash:
+    '<path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6l-1 14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  x: '<path d="M18 6 6 18"/><path d="M6 6l12 12"/>',
 };
 
 function iconSvg(name, extraAttrs) {

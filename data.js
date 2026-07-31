@@ -63,6 +63,12 @@ const CATEGORIES = [
         body: "입사 첫 주에 필요한 계정 발급, 장비 세팅, 팀 소개 절차를 정리했습니다.\n\n담당 버디(buddy) 배정 규칙과 1개월차 체크리스트도 포함되어 있습니다." },
       { id: "doc-4", title: "월간 성과 리포트 양식", meta: "보고서 · 4쪽", hue: 205,
         body: "매월 말 팀별로 제출하는 성과 리포트의 공통 양식입니다.\n\n핵심 지표(KPI), 이번 달 하이라이트, 다음 달 계획 세 섹션으로 구성됩니다." },
+      // skipGenerate: true → generate_items.js가 이 항목의 items/ai-trend.html을
+      // 절대 덮어쓰지 않습니다. 이 페이지는 손으로 직접 작성한 편집 가능한
+      // (추가/수정/삭제) 커스텀 페이지이기 때문입니다. 자세한 내용은 GUIDE.md 참고.
+      { id: "ai-trend", title: "AI 발전 흐름", meta: "용어 정리 · 편집 가능", hue: 205,
+        skipGenerate: true,
+        body: "AI 활용 관련 핵심 용어와 흐름을 정리한 편집 가능한 페이지입니다." },
     ],
   },
  

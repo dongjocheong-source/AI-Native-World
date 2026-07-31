@@ -78,12 +78,19 @@ function renderPage(cat, item) {
 }
 
 let count = 0;
+let skipped = 0;
 for (const cat of CATEGORIES) {
   for (const item of cat.items) {
+    if (item.skipGenerate) {
+      // This item's page was hand-written (e.g. an editable CRUD page like
+      // items/ai-trend.html) and must never be overwritten by this script.
+      skipped++;
+      continue;
+    }
     const outPath = path.join(OUT_DIR, `${item.id}.html`);
     fs.writeFileSync(outPath, renderPage(cat, item), "utf8");
     count++;
   }
 }
 
-console.log(`Generated ${count} item pages into ${OUT_DIR}`);
+console.log(`Generated ${count} item pages into ${OUT_DIR} (skipped ${skipped} custom page(s))`);

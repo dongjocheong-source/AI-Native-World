@@ -61,6 +61,29 @@ AI-Native-World-main/
 - **항목을 추가/삭제**하려면 해당 카테고리의 `items` 배열을 수정하세요.
 - 수정 후 아래 명령을 실행하면 `items/*.html` 상세 페이지가 다시 생성됩니다.
 
+### 손으로 직접 쓴 "커스텀" 상세 페이지 (`skipGenerate: true`)
+
+일반 상세 페이지는 제목 + 문단 텍스트로 충분하지만, `items/ai-trend.html`처럼
+사용자가 직접 항목을 추가·수정·삭제할 수 있는 페이지가 필요할 때가 있습니다.
+이런 페이지는 `generate_items.js`가 만드는 정적 템플릿으로는 표현할 수 없으므로,
+데이터 항목에 `skipGenerate: true`를 추가해 자동 생성 대상에서 제외합니다.
+
+```js
+{ id: "ai-trend", title: "AI 발전 흐름", meta: "용어 정리 · 편집 가능", hue: 205,
+  skipGenerate: true,   // generate_items.js가 이 id의 파일을 절대 건드리지 않음
+  body: "..." },        // 카드 미리보기 등 다른 곳에서 재사용될 수 있으니 남겨둠
+```
+
+`skipGenerate: true`가 있는 항목은 사이드바 카드 목록에는 정상적으로 나타나지만
+(`items/{id}.html`로 링크), `node generate_items.js`를 실행해도 해당 파일은
+건드리지 않습니다. 이런 페이지를 새로 만들 때 체크리스트:
+
+1. `data.js`에 `skipGenerate: true`를 넣은 항목을 추가한다.
+2. `items/{id}.html`을 직접 작성한다 (기존 커스텀 페이지를 복사해서 시작하는 게 가장 빠름).
+3. 콘텐츠는 그 페이지 안의 인라인 `<script>`에서 `localStorage`에 저장/로드한다
+   (파일을 그대로 여는 정적 사이트라 서버/DB가 없기 때문 — 브라우저별·경로별로 저장됨).
+4. 저장 키는 다른 페이지와 겹치지 않게 `"ai-hub:{id}:v1"` 형태로 짓는다.
+
 ```bash
 node generate_items.js
 ```
