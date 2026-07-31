@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>정보 허브 · Info Hub</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <nav class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Z"/>
+            <path d="M12 12v9"/>
+            <path d="M8 21h8"/>
+          </svg>
+        </span>
+        <span class="brand-name">INFO HUB</span>
+      </div>
+
+      <ul class="nav-list" id="nav-list"></ul>
+
+      <div class="sidebar-footer">
+        모든 정보를 한 곳에서.<br />
+        카테고리를 선택해 항목을 확인하세요.
+      </div>
+    </nav>
+
+    <main class="main">
+      <header class="main-header">
+        <p class="eyebrow" id="page-eyebrow">CATEGORY</p>
+        <h1 class="page-title" id="page-title">-</h1>
+        <p class="page-desc" id="page-desc"></p>
+        <p class="item-count" id="item-count"></p>
+      </header>
+
+      <section class="item-grid" id="item-grid"></section>
+    </main>
+  </div>
+
+  <script src="icons.js"></script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+/* ==========================================================================
+   Info Hub — Spotify-inspired design system
+   Source tokens: DESIGN-spotify.md
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --bg-base: #121212;
+  --bg-sidebar: #000000;
+  --bg-surface: #181818;
+  --bg-surface-2: #1f1f1f;
+  --bg-card: #252525;
+  --bg-card-alt: #272727;
+
+  /* Text */
+  --text-base: #ffffff;
+  --text-bright: #fdfdfd;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #cbcbcb;
+
+  /* Brand */
+  --accent: #1ed760;
+  --accent-border: #1db954;
+  --accent-ink: #04140a;
+
+  /* Semantic */
+  --negative: #f3727f;
+  --warning: #ffa42b;
+  --announcement: #539df5;
+
+  /* Borders */
+  --border: #4d4d4d;
+  --border-light: #7c7c7c;
+  --separator: #2a2a2a;
+
+  /* Radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-medium: rgba(0, 0, 0, 0.3) 0px 8px 8px;
+  --shadow-heavy: rgba(0, 0, 0, 0.5) 0px 8px 24px;
+  --shadow-inset: rgb(18, 18, 18) 0px 1px 0px, rgb(124, 124, 124) 0px 0px 0px 1px inset;
+
+  /* Fonts (proprietary SpotifyMixUI is not distributed; fall back per spec) */
+  --font-title: "SpotifyMixUITitle", "Helvetica Neue", Arial, "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", Meiryo, "Malgun Gothic", sans-serif;
+  --font-ui: "SpotifyMixUI", "Helvetica Neue", Arial, "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", Meiryo, "Malgun Gothic", sans-serif;
+
+  --sidebar-width: 260px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-base);
+  color: var(--text-base);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+
+.sidebar {
+  width: var(--sidebar-width);
+  flex: 0 0 var(--sidebar-width);
+  background: var(--bg-sidebar);
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px 18px;
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-ink);
+  flex: none;
+}
+
+.brand-mark svg {
+  width: 18px;
+  height: 18px;
+}
+
+.brand-name {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  color: var(--text-bright);
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.nav-item svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  opacity: 0.85;
+}
+
+.nav-item:hover {
+  background: var(--bg-surface-2);
+  color: var(--text-base);
+}
+
+.nav-item.active {
+  background: var(--bg-surface-2);
+  color: var(--text-base);
+  font-weight: 700;
+}
+
+.nav-item.active svg {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 10px 12px 4px;
+  font-size: 11px;
+  color: var(--border-light);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Main content
+   ========================================================================== */
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 28px 40px 60px;
+}
+
+.main-header {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+
+.page-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 32px;
+  margin: 0 0 10px;
+  color: var(--text-bright);
+}
+
+.page-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 4px;
+  max-width: 640px;
+  line-height: 1.5;
+}
+
+.item-count {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Item grid + cards
+   ========================================================================== */
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 20px;
+}
+
+.item-card {
+  display: block;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  position: relative;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.item-card:hover {
+  background: var(--bg-card-alt);
+}
+
+.item-card:hover .card-play {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.card-cover svg {
+  width: 28px;
+  height: 28px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.card-play {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-heavy);
+}
+
+.card-play svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 2px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-base);
+  margin: 0 0 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Buttons (pills)
+   ========================================================================== */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface-2);
+  color: var(--text-base);
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+}
+
+.pill.outlined {
+  background: transparent;
+  border: 1px solid var(--border-light);
+}
+
+.pill svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ==========================================================================
+   Detail page
+   ========================================================================== */
+
+.detail-shell {
+  max-width: 720px;
+}
+
+.back-link {
+  margin-bottom: 24px;
+}
+
+.detail-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(30, 215, 96, 0.12);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 14px;
+}
+
+.detail-title {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--text-bright);
+  margin: 0 0 10px;
+}
+
+.detail-meta {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0 0 28px;
+}
+
+.detail-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-medium);
+}
+
+.detail-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-tertiary);
+  margin: 0 0 16px;
+}
+
+.detail-card p:last-child {
+  margin-bottom: 0;
+}
+
+.detail-cover {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-cover svg {
+  width: 56px;
+  height: 56px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ==========================================================================
+   Empty state
+   ========================================================================== */
+
+.empty-state {
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 40px 0;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 896px) {
+  :root {
+    --sidebar-width: 84px;
+  }
+  .brand-name,
+  .nav-item span {
+    display: none;
+  }
+  .nav-item {
+    justify-content: center;
+  }
+  .brand {
+    justify-content: center;
+    padding: 6px 0 18px;
+  }
+  .main {
+    padding: 24px 20px 48px;
+  }
+}
+
+@media (max-width: 560px) {
+  .item-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+  }
+  .page-title {
+    font-size: 24px;
+  }
+}
