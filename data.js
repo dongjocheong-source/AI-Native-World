@@ -84,7 +84,7 @@ const CATEGORIES = [
   },
   
   {
-    id: "UsefulInfo",
+    id: "usefulinfo",
     label: "유용한정보",
     icon: "user",
     description: "아이디어를 얻을수 있는 유용한 정보를 관리합니다.",
