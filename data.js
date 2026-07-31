@@ -60,19 +60,16 @@ const CATEGORIES = [
   },
   
   {
-    id: "contacts",
+    id: "UsefulInfo",
     label: "유용한정보",
     icon: "user",
     description: "아이디어를 얻을수 있는 유용한 정보를 관리합니다.",
     items: [
-      { id: "contact-1", title: "디자인팀", meta: "내부 · 6명", hue: 160,
+      { id: "useful-1", title: "LLM_Knowledge_Bases", meta: "By_Karpathy", hue: 160,
         body: "디자인팀 구성원 연락처와 담당 업무 목록입니다." },
-      { id: "contact-2", title: "외주 개발자", meta: "외부 · 3명", hue: 160,
+      { id: "useful-2", title: "LLM_Wiki_Idea", meta: "By_Karpathy", hue: 160,
         body: "현재 협업 중인 외주 개발자 연락처입니다." },
-      { id: "contact-3", title: "거래처 담당자", meta: "외부 · 4명", hue: 160,
-        body: "주요 거래처 담당자 연락처 및 계약 조건 요약입니다." },
-      { id: "contact-4", title: "멘토 리스트", meta: "개인", hue: 160,
-        body: "커리어 관련 조언을 구하는 멘토 연락처 목록입니다." },
+
     ],
   },
   {
