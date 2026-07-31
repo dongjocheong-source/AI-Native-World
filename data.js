@@ -27,7 +27,7 @@
 const CATEGORIES = [
   {
     id: "documents",
-    label: "AI 용어정리",
+    label: "AI용어정리",
     icon: "file-text",
     description: "AI관련 용어, 유용한 Tool 정보 정리",
     items: [
