@@ -31,7 +31,7 @@ const CATEGORIES = [
     icon: "file-text",
     description: "AI관련 용어, 유용한 Tool 정보 정리",
     items: [
-      { id: "doc-1", title: "LLM_Knowledge_Bases", meta: "By Karpathy", hue: 205,
+      { id: "Doc1_LLM_Knowledge_Bases_By_Karpathy", title: "LLM_Knowledge_Bases", meta: "By Karpathy", hue: 205,
         body: "2026년 3분기 전략 방향을 논의한 회의 기록입니다.\n\n주요 안건: 신규 시장 진입 우선순위, 분기 목표(OKR) 재설정, 리소스 배분 조정." },
       { id: "doc-2", title: "표준 NDA 템플릿", meta: "계약서 · 5쪽", hue: 205,
         body: "외부 협력사와 체결하는 비밀유지계약(NDA)의 표준 양식입니다.\n\n법무팀 검토가 완료된 최신 버전이며, 별도 승인 없이 바로 사용할 수 있습니다." },
