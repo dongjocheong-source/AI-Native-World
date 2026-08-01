@@ -56,17 +56,17 @@ const CATEGORIES = [
     description: "AI관련 발전 흐름, 용어 설명, 유용한 Tool 정보 정리",
     items: [
       { id: "ai-trend", title: "AI 발전 흐름", meta: "발전 흐름", hue: 205, skipGenerate: true,
-        body: "프롬프트 엔지니어링에서 그래프 엔지니어링까지, AI 활용 방식의 진화" },
+        body: "프롬프트 엔지니어링에서 그래프 엔지니어링까지, AI 활용 방식의 진화 정리 내용입니다" },
       { id: "ai-word", title: "AI 용어 정리", meta: "신입AI키우기쪽", hue: 205,
-        body: "AI 용어 12개로 배우는, 신입사원 AI의 성장 과정" },
+        body: "AI 용어 12개로 배우는, 신입사원 AI의 성장 과정에 도움이 되는 내용입니다" },
       { id: "ai-tools", title: "AI Tool 정리", meta: "AI 관련 유용한 Tool 정리", hue: 205,
-        body: "AI 활용을 위한 필수 Tool 들 정리" },     
+        body: "AI 활용을 위한 필수 Tool 들에 대한 정리 입니다" },     
    ],
   },
  
   {
     id: "usage-tips",
-    label: "AI활용팁",
+    label: "AI 활용팁",
     icon: "coffee",
     description: "자주 해먹는 요리와 새로 시도해볼 레시피입니다.",
     items: [
@@ -82,15 +82,15 @@ const CATEGORIES = [
   },
   
   {
-    id: "usefulInfo",
-    label: "유용한정보",
+    id: "Reference",
+    label: "참고정보",
     icon: "user",
     description: "아이디어를 얻을수 있는 유용한 정보를 관리합니다.",
     items: [
-      { id: "useful-1", title: "LLM_Knowledge_Bases", meta: "By_Karpathy", hue: 160,
-        body: "디자인팀 구성원 연락처와 담당 업무 목록입니다." },
-      { id: "useful-2", title: "LLM_Wiki_Idea", meta: "By_Karpathy", hue: 160,
-        body: "현재 협업 중인 외주 개발자 연락처입니다." },
+      { id: "reference-1", title: "LLM_Knowledge_Bases", meta: "By_Karpathy", hue: 160,
+        body: "Karpathy의 LLM knowledge Base에 대한 내용 정리 입니다." },
+      { id: "reference-2", title: "LLM_Wiki_Idea", meta: "By_Karpathy", hue: 160,
+        body: "Karpathy의 LLM wiki idea에 대한 내용 정리 입니다. " },
 
     ],
   },
@@ -110,6 +110,24 @@ const CATEGORIES = [
         body: "로고, 컬러 팔레트, 타이포그래피를 포함한 브랜드 아이덴티티 개편 프로젝트입니다.\n\n전사 적용 가이드라인 배포까지 완료되었습니다." },
     ],
   },
+  
+   {
+    id: "learning",
+    label: "학습자료",
+    icon: "book-open",
+    description: "강의, 스터디 정리 등 학습 관련 자료입니다.",
+    items: [
+      { id: "learn-1", title: "React 강의 정리", meta: "진행률 72%", hue: 190,
+        body: "온라인 강의를 들으며 정리한 React 핵심 개념 노트입니다.\n\nHooks, 상태 관리, 성능 최적화 챕터를 다루고 있습니다." },
+      { id: "learn-2", title: "데이터 분석 스터디", meta: "6주차", hue: 190,
+        body: "팀 내 데이터 분석 스터디에서 다룬 내용을 정리한 자료입니다." },
+      { id: "learn-3", title: "영어 회화 노트", meta: "매일", hue: 190,
+        body: "업무용 영어 표현과 회의 회화 패턴을 정리한 노트입니다." },
+      { id: "learn-4", title: "디자인 시스템 강의", meta: "완료", hue: 190,
+        body: "디자인 시스템 구축 방법론에 대한 강의를 듣고 정리했습니다.\n\n토큰 설계, 컴포넌트 문서화 방식을 중점적으로 다룹니다." },
+    ],
+  },
+
   {
     id: "bookmarks",
     label: "북마크",
@@ -142,23 +160,7 @@ const CATEGORIES = [
         body: "사용자 인터뷰 중 나온 주요 발언과 인사이트를 기록했습니다." },
     ],
   },
-  {
-    id: "learning",
-    label: "학습자료",
-    icon: "book-open",
-    description: "강의, 스터디 정리 등 학습 관련 자료입니다.",
-    items: [
-      { id: "learn-1", title: "React 강의 정리", meta: "진행률 72%", hue: 190,
-        body: "온라인 강의를 들으며 정리한 React 핵심 개념 노트입니다.\n\nHooks, 상태 관리, 성능 최적화 챕터를 다루고 있습니다." },
-      { id: "learn-2", title: "데이터 분석 스터디", meta: "6주차", hue: 190,
-        body: "팀 내 데이터 분석 스터디에서 다룬 내용을 정리한 자료입니다." },
-      { id: "learn-3", title: "영어 회화 노트", meta: "매일", hue: 190,
-        body: "업무용 영어 표현과 회의 회화 패턴을 정리한 노트입니다." },
-      { id: "learn-4", title: "디자인 시스템 강의", meta: "완료", hue: 190,
-        body: "디자인 시스템 구축 방법론에 대한 강의를 듣고 정리했습니다.\n\n토큰 설계, 컴포넌트 문서화 방식을 중점적으로 다룹니다." },
-    ],
-  },
-
+ 
   {
     id: "ideas",
     label: "아이디어",
