@@ -51,21 +51,16 @@ const PORTAL_TOOLS = [
 const CATEGORIES = [
   {
     id: "documents",
-    label: "AI용어정리",
+    label: "AI기초/용어정리",
     icon: "file-text",
-    description: "AI관련 용어, 유용한 Tool 정보 정리",
+    description: "AI관련 발전 흐름, 용어 설명, 유용한 Tool 정보 정리",
     items: [
-      { id: "ai-trend", title: "AI 발전 흐름", meta: "용어 정리 · 편집 가능", hue: 205, skipGenerate: true,
-        body: "AI 활용 관련 핵심 용어와 흐름을 정리한 편집 가능한 페이지입니다." },
-      { id: "doc-2", title: "표준 NDA 템플릿", meta: "계약서 · 5쪽", hue: 205,
-        body: "외부 협력사와 체결하는 비밀유지계약(NDA)의 표준 양식입니다.\n\n법무팀 검토가 완료된 최신 버전이며, 별도 승인 없이 바로 사용할 수 있습니다." },
-      { id: "doc-3", title: "신규 입사자 온보딩 가이드", meta: "매뉴얼 · 12쪽", hue: 205,
-        body: "입사 첫 주에 필요한 계정 발급, 장비 세팅, 팀 소개 절차를 정리했습니다.\n\n담당 버디(buddy) 배정 규칙과 1개월차 체크리스트도 포함되어 있습니다." },
-      { id: "doc-4", title: "월간 성과 리포트 양식", meta: "보고서 · 4쪽", hue: 205,
-        body: "매월 말 팀별로 제출하는 성과 리포트의 공통 양식입니다.\n\n핵심 지표(KPI), 이번 달 하이라이트, 다음 달 계획 세 섹션으로 구성됩니다." },
-      // skipGenerate: true → generate_items.js가 이 항목의 items/ai-trend.html을
-      // 절대 덮어쓰지 않습니다. 이 페이지는 손으로 직접 작성한 편집 가능한
-      // (추가/수정/삭제) 커스텀 페이지이기 때문입니다. 자세한 내용은 GUIDE.md 참고.
+      { id: "ai-trend", title: "AI 발전 흐름", meta: "발전 흐름", hue: 205, skipGenerate: true,
+        body: "프롬프트 엔지니어링에서 그래프 엔지니어링까지, AI 활용 방식의 진화" },
+      { id: "ai-word", title: "AI 용어 정리", meta: "신입AI키우기쪽", hue: 205,
+        body: "AI 용어 12개로 배우는, 신입사원 AI의 성장 과정" },
+      { id: "ai-tool", title: "AI Tool 정리", meta: "AI 관련 유용한 Tool 정리", hue: 205,
+        body: "AI 활용을 위한 필수 Tool 들 정리" },     
    ],
   },
  
