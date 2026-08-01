@@ -59,7 +59,7 @@ const CATEGORIES = [
         body: "프롬프트 엔지니어링에서 그래프 엔지니어링까지, AI 활용 방식의 진화" },
       { id: "ai-word", title: "AI 용어 정리", meta: "신입AI키우기쪽", hue: 205,
         body: "AI 용어 12개로 배우는, 신입사원 AI의 성장 과정" },
-      { id: "ai-tool", title: "AI Tool 정리", meta: "AI 관련 유용한 Tool 정리", hue: 205,
+      { id: "ai-tools", title: "AI Tool 정리", meta: "AI 관련 유용한 Tool 정리", hue: 205,
         body: "AI 활용을 위한 필수 Tool 들 정리" },     
    ],
   },
