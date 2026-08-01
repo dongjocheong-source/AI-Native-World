@@ -50,7 +50,7 @@ const PORTAL_TOOLS = [
 
 const CATEGORIES = [
   {
-    id: "documents",
+    id: "basi_words",
     label: "AI기초/용어정리",
     icon: "file-text",
     description: "AI관련 발전 흐름, 용어 설명, 유용한 Tool 정보 정리",
@@ -65,7 +65,7 @@ const CATEGORIES = [
   },
  
   {
-    id: "recipes",
+    id: "usage-tips",
     label: "AI활용팁",
     icon: "coffee",
     description: "자주 해먹는 요리와 새로 시도해볼 레시피입니다.",
@@ -82,7 +82,7 @@ const CATEGORIES = [
   },
   
   {
-    id: "UsefulInfo",
+    id: "usefulInfo",
     label: "유용한정보",
     icon: "user",
     description: "아이디어를 얻을수 있는 유용한 정보를 관리합니다.",
