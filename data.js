@@ -51,7 +51,7 @@ const PORTAL_TOOLS = [
 const CATEGORIES = [
   {
     id: "basi_words",
-    label: "AI기초/용어정리",
+    label: "AI기초정리",
     icon: "file-text",
     description: "AI관련 발전 흐름, 용어 설명, 유용한 Tool 정보 정리",
     items: [
